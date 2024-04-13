@@ -202,82 +202,6 @@ const Home = () => {
       <h1 className="text-6xl font-bold text-indigo-600 text-center my-5">
         OpenDataSoft
       </h1>
-      <div className="flex flex-col">
-        <div className="search-engine md:w-[60%] mx-auto flex flex-col space-y-4 justify-around items-center my-1 sm:flex-row sm:space-y-0">
-          <input
-            type="text"
-            className="city-search sm:w-[70%] border rounded-md h-[3rem] py-2 px-5 text-lg outline-none text-indigo-600 font-semibold"
-            placeholder="Enter Country Code (e.g., IN for India)"
-            name="search"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          <button
-            className="search-btn border rounded-lg bg-indigo-600 text-white font-semibold text-lg outline-none sm:px-5 sm:py-2 px-3 py-2"
-            onClick={() => onSearch(search)}
-          >
-            Search Cities
-          </button>
-        </div>
-        <div className="dropdown flex flex-col border border-gray-400 md:ml-[19.5rem] ml-[6rem] rounded-md overflow-auto md:w-[37rem] w-[20rem] h-[15rem] ">
-          {cityData
-            ?.filter((city) => {
-              const searchTerm = search.toLowerCase();
-              const cityName = city.fields.ascii_name.toLocaleLowerCase();
-              const cityCountry = city.fields.cou_name_en.toLocaleLowerCase();
-              const cityPopulation = city.fields.population;
-              const cityLon = city.fields.coordinates[0];
-              const cityLat = city.fields.coordinates[1];
-              const cityTimezone = city.fields.timezone;
-
-              return (
-                (searchTerm &&
-                  cityName.startsWith(searchTerm) &&
-                  cityName !== searchTerm) ||
-                (cityCountry.startsWith(searchTerm) &&
-                  cityCountry !== searchTerm) ||
-                (cityPopulation.toString().startsWith(searchTerm) &&
-                  cityPopulation.toString() !== searchTerm) ||
-                (cityLon.toString().startsWith(searchTerm) &&
-                  cityLon.toLocaleString() !== searchTerm) ||
-                (cityLat.toString().startsWith(searchTerm) &&
-                  cityLat.toLocaleString() !== searchTerm) ||
-                (cityTimezone.startsWith(searchTerm) &&
-                  cityTimezone !== searchTerm)
-              );
-            })
-            .slice(0, 10)
-            .map((city) => (
-              <div
-                onClick={() =>
-                  onSearch(
-                    city.fields.ascii_name &&
-                      city.fields.coordinates[0] &&
-                      city.fields.coordinates[1] &&
-                      city.fields.cou_name_en &&
-                      city.fields.population &&
-                      city.fields.timezone
-                  )
-                }
-                className="dropdown-row cursor-pointer text-start my-[2px] mx-0 hover:bg-slate-200"
-                key={city.fields.geoname_id}
-              >
-                <Link
-                  to={`/${city.fields.cou_name_en}/${city.fields.ascii_name}/${city.fields.geoname_id}/${city.fields.ascii_name}`}
-                  className="text-gray-500 pl-4"
-                >
-                  {city.fields.ascii_name ||
-                    city.fields.coordinates[0] ||
-                    city.fields.coordinates[1] ||
-                    city.fields.coordinates[1] ||
-                    city.fields.cou_name_en ||
-                    city.fields.population ||
-                    city.fields.timezone}
-                </Link>
-              </div>
-            ))}
-        </div>
-      </div>
       <div className="mt-10">
         <table className="md:mx-auto sm:w-[80%] table-fixed">
           <thead className="bg-indigo-300">
@@ -309,7 +233,7 @@ const Home = () => {
                   );
                 })
                 .map((city) => (
-                  <tr key={city.datasetid} className="text-center">
+                  <tr key={city.recordid} className="text-center">
                     <td className="py-4 cursor-pointer sm:w-[20rem] w-[15rem]">
                       <Link
                         to={`/${city.fields.cou_name_en}/${city.fields.ascii_name}/${city.fields.geoname_id}/${city.fields.ascii_name}`}
