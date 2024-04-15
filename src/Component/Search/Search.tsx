@@ -1,4 +1,4 @@
-const Search = ({ search, setSearch, handleSearch }) => {
+const Search = ({ search, setSearch, handleSearch }:SearchProps) => {
   return (
     <div className="search-engine w-full flex flex-col space-y-4 justify-around items-center mt-10 mb-5 sm:flex-row sm:space-y-0">
       <input

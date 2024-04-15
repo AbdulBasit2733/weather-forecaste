@@ -1,9 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Search from "../Search/Search";
-
+interface WeatherData {
+  name: string;
+  sys: {
+    country: string;
+  };
+  timezone: number;
+  main: {
+    temp: number;
+    feels_like: number;
+    humidity: number;
+  };``
+  weather: {
+    main: string;
+    description: string;
+  }[];
+  wind: {
+    speed: number;
+  };
+}
 const Weather = ({ search, setSearch }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [weatherData, setWeatherData] = useState<JSON | null>(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const weatherIcons: Record<string, string> = {
