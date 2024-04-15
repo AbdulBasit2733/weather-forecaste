@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import envCompatible from 'vite-plugin-env-compatible';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
+
+// Load environment variables from .env
+dotenv.config();
 
 export default defineConfig({
-  plugins: [
-    react(),
-    envCompatible()
-  ],
+  plugins: [react()],
   define: {
-    'process.env.REACT_OPEN_WEATHER_API_KEY': process.env.REACT_OPEN_WEATHER_API_KEY,
+    "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
   },
 });
