@@ -10,7 +10,7 @@ interface WeatherData {
     temp: number;
     feels_like: number;
     humidity: number;
-  };``
+  };
   weather: {
     main: string;
     description: string;
