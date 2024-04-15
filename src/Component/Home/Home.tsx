@@ -125,7 +125,7 @@ const Home = () => {
           <tbody>
             {cityData &&
               cityData
-                .filter((item) => {
+                ?.filter((item) => {
                   return (
                     item.fields.ascii_name
                       .toLowerCase()

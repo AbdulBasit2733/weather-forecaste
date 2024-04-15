@@ -21,10 +21,11 @@ const Weather: React.FC<{
   async function fetchWeatherData(param: string) {
     setLoading(true);
     setError(null);
-    console.log(import.meta.env.API_KEY);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=f01165b22328ce37d2107cb0f0be4ec3`
+        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${
+          import.meta.env.VITE_API_KEY
+        }`
       );
       const data = await response.json();
       console.log(data);
@@ -145,11 +146,6 @@ const Weather: React.FC<{
                 </div>
               </div>
             </>
-          )}
-          {!loading && !weatherData && (
-            <div className="text-center text-red-500">
-              Weather data not found for "{search}"
-            </div>
           )}
         </div>
       )}
