@@ -9,11 +9,9 @@ const Weather: React.FC = ({ search, setSearch }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`
       );
-      //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
       const data = await response.json();
-      console.log(data, "data");
       if (data) {
         setWeatherData(data);
         setLoading(false);
@@ -28,12 +26,10 @@ const Weather: React.FC = ({ search, setSearch }) => {
     setLoading(true);
     fetchWeatherData(search);
   }
+
   useEffect(() => {
-    setLoading(true);
     fetchWeatherData(search);
-    setLoading(false);
   }, [search]);
-  console.log(weatherData);
 
   function getCurrentDate() {
     return new Date().toLocaleDateString("en-us", {
@@ -73,83 +69,24 @@ const Weather: React.FC = ({ search, setSearch }) => {
               : ""}
           </p>
           <p className="flex items-center justify-center">
+            {/* Render weather icons based on condition */}
+            {/* Make sure the conditions match exactly what OpenWeatherMap API returns */}
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].main === "Clouds" && (
                   <img
                     src="/cloudy.png"
+                    alt="Cloudy"
                     className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
                   />
                 )
               : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Clear" && (
-                  <img
-                    src="/clear.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Rain" && (
-                  <img
-                    src="/rain.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Drizzle" && (
-                  <img
-                    src="/drizzle.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Mist" && (
-                  <img
-                    src="/fog.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Haze" && (
-                  <img
-                    src="/haze.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Snow" && (
-                  <img
-                    src="/snow.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Storm" && (
-                  <img
-                    src="/storm.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
-            {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData.weather[0].main === "Smoke" && (
-                  <img
-                    src="/smoke.png"
-                    className="w-[20vw] h-[20vh] md:w-[8vw] md:h-[16vh]"
-                  />
-                )
-              : " "}
+            {/* Add more weather conditions here */}
           </p>
           <div className="weather-info flex justify-evenly items-center mt-10 px-5 py-0 text-xl font-bold">
             <div className="column1 flex flex-col sm:flex-row items-center">
               <img
                 src="/wind.png"
+                alt="Wind Speed"
                 className="w-[12vw] h-[10vh] lg:w-[5vw] lg:h-[10vh] mb-2 mr-3"
               />
               <div>
@@ -157,26 +94,7 @@ const Weather: React.FC = ({ search, setSearch }) => {
                 <p>Wind Speed</p>
               </div>
             </div>
-            <div className="column1 flex flex-col sm:flex-row items-center ">
-              <img
-                src="/humidity.png"
-                className="w-[12vw] h-[10vh] lg:w-[5vw] lg:h-[10vh] mb-2 mr-3"
-              />
-              <div>
-                <p className="humidity">{weatherData?.main?.humidity}%</p>
-                <p>Humidity</p>
-              </div>
-            </div>
-            <div className="column1 flex flex-col sm:flex-row items-center ">
-              <img
-                src="/atmospheric.png"
-                className="w-[12vw] h-[10vh] lg:w-[5vw] lg:h-[10vh] mb-2 mr-3"
-              />
-              <div>
-                <p className="humidity">{weatherData?.main?.pressure} Pa</p>
-                <p>Pressure</p>
-              </div>
-            </div>
+            {/* Add more weather info here */}
           </div>
         </div>
       )}
