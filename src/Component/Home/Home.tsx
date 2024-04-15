@@ -66,7 +66,7 @@ const Home = () => {
     );
   };
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestionClick = (suggestion: string) => {
     setSearch(suggestion);
     setShowSuggestions(false);
   };
@@ -112,9 +112,9 @@ const Home = () => {
         )}
       </div>
       <div className="mt-10">
-        <table className="sm:mx-auto sm:w-[80%] table-fixed">
-          <thead className="bg-indigo-300">
-            <tr className="border border-indigo-300">
+        <table className="sm:mx-auto sm:w-[80%] table-fixed border-2">
+          <thead className="bg-indigo-300 ">
+            <tr className="border">
               <th className="py-4">Name</th>
               <th className="py-4">Country</th>
               <th className="py-4">Population</th>
@@ -122,7 +122,7 @@ const Home = () => {
               <th className="py-4">Coordinates</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {cityData &&
               cityData
                 ?.filter((item) => {
@@ -142,8 +142,8 @@ const Home = () => {
                   );
                 })
                 .map((city) => (
-                  <tr key={city.recordid} className="text-center">
-                    <td className="py-4 cursor-pointer sm:w-[20rem] w-[12rem]">
+                  <tr key={city.recordid} className="text-center border">
+                    <td className="py-4 cursor-pointer sm:w-[20rem] w-[12rem] border-r-2">
                       <Link
                         to={`/${city.fields.cou_name_en}/${city.fields.ascii_name}/${city.fields.geoname_id}/${city.fields.ascii_name}`}
                         className="text-indigo-600 hover:underline"
@@ -151,17 +151,17 @@ const Home = () => {
                         {city.fields.ascii_name}
                       </Link>
                     </td>
-                    <td className="py-3 sm:w-[20rem] w-[12rem]">
+                    <td className="py-3 sm:w-[20rem] w-[12rem] border-r-2">
                       <Link
                         to={`/city/${city.recordid}/${city.fields.ascii_name}`}
                       >
                         {city.fields.cou_name_en}
                       </Link>
                     </td>
-                    <td className="py-3 sm:w-[20rem] w-[12rem]">
+                    <td className="py-3 sm:w-[20rem] w-[12rem] border-r-2">
                       {city.fields.population}
                     </td>
-                    <td className="py-3 sm:w-[20rem] w-[12rem]">
+                    <td className="py-3 sm:w-[20rem] w-[12rem] border-r-2">
                       {city.fields.timezone}
                     </td>
                     <td className="py-3 sm:w-[20rem] w-[12rem]">

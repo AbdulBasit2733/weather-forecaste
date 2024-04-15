@@ -1,6 +1,6 @@
 const Search = ({ search, setSearch, handleSearch }) => {
   return (
-    <div className="search-engine w-full flex flex-col space-y-4 justify-around items-center my-10 sm:flex-row sm:space-y-0">
+    <div className="search-engine w-full flex flex-col space-y-4 justify-around items-center mt-10 mb-5 sm:flex-row sm:space-y-0">
       <input
         type="text"
         className="city-search sm:w-[70%] border rounded-md h-[3rem] py-2 px-5 text-lg outline-none text-indigo-600 font-semibold"

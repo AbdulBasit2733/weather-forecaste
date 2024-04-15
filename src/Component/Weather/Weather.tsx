@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Search from "../Search/Search";
 
-const Weather: React.FC<{
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ search, setSearch }) => {
+const Weather = ({ search, setSearch }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [weatherData, setWeatherData] = useState<any | null>(null);
+  const [weatherData, setWeatherData] = useState<JSON | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const weatherIcons = {
+  const weatherIcons: Record<string, string> = {
     Clouds: "/cloudy.png",
     Clear: "/clear.png",
     Rain: "/rain.png",
@@ -75,7 +72,7 @@ const Weather: React.FC<{
               <div className="city-data mb-3">
                 <h2>
                   {weatherData.name}, <span>{weatherData.sys.country}</span>
-                  <span> {weatherData.timezone}</span>
+                  <span>{weatherData.timezone}</span>
                 </h2>
               </div>
               <div className="date font-medium italic text-xl">
