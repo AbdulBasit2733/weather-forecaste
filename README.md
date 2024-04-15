@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+To run the project after cloning it from GitHub to your local machine, follow these steps:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prerequisites
+Node.js (>= 14.x)
+npm (Node Package Manager)
 
-Currently, two official plugins are available:
+1. git clone <https://github.com/AbdulBasit2733/weather-forecaste.git>
+2. cd weather-forecast
+3. npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4. Create a .env file in the root directory:
+then add your api key of <https://openweathermap.org/current>
+<NOTE> use <<VITE_VariableName = API KEY>> for securing your key in env file
 
-## Expanding the ESLint configuration
+5. use this OpenSoftData Api URL <https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&rows=1000&facet=country_code&facet=admin1_code&facet=admin2_code&facet=timezone&refine.population>=1000> for getting all the data
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+6. Start the development server:
+<npm run dev>
