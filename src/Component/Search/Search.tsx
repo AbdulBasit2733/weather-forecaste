@@ -1,5 +1,3 @@
-import React from "react";
-
 const Search = ({ search, setSearch, handleSearch }) => {
   return (
     <div className="search-engine w-full flex flex-col space-y-4 justify-around items-center my-10 sm:flex-row sm:space-y-0">

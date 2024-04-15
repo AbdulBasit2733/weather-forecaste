@@ -1,4 +1,4 @@
-import React from "react";
+
 import Weather from "../Weather/Weather";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
