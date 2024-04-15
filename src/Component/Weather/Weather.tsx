@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Search from "../Search/Search";
 
-const Weather = ({ search, setSearch }) => {
+const Weather: React.FC = ({ search, setSearch }) => {
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
 
@@ -9,7 +9,7 @@ const Weather = ({ search, setSearch }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=f01165b22328ce37d2107cb0f0be4ec3`
+        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
       );
       //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
       const data = await response.json();
