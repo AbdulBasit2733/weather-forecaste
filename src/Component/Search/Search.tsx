@@ -11,7 +11,10 @@ const Search = ({ search, setSearch, handleSearch }) => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <button className="search-btn border rounded-lg bg-indigo-600 text-white font-semibold text-lg outline-none sm:px-5 sm:py-2 px-3 py-2" onClick={handleSearch}>
+      <button
+        className="search-btn border rounded-lg bg-indigo-600 text-white font-semibold text-lg outline-none px-3 py-2"
+        onClick={handleSearch}
+      >
         Search Weather
       </button>
     </div>

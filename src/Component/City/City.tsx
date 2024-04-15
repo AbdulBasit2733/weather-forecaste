@@ -7,7 +7,7 @@ const City = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="City text-center mt-12 mx-auto w-[90%] max-w-[700px] rounded-lg md:h-[80vh] sm:h-fit py-5 px-4 bg-indigo-200 ">
+      <div className="City text-center mt-12 mx-auto w-[90%] max-w-[700px] rounded-lg md:h-full sm:h-fit py-5 px-4 bg-indigo-200 ">
         <Weather
           key={params.geoname_id}
           search={params.name}

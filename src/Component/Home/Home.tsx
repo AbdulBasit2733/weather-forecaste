@@ -77,7 +77,7 @@ const Home = () => {
         OpenDataSoft
       </h1>
       <div className="mx-auto">
-        <div className="flex justify-center items-center mt-8 gap-5">
+        <div className="flex justify-center items-center mt-8 gap-5 mb-1">
           <input
             type="text"
             className="px-3 py-2 border border-gray-300 rounded-md sm:w-[25rem] w-[18rem]"

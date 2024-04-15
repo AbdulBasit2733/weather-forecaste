@@ -8,6 +8,6 @@ dotenv.config();
 export default defineConfig({
   plugins: [react()],
   define: {
-    "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
+    __API_KEY__: `"${process.env.API_KEY}"`,
   },
 });
