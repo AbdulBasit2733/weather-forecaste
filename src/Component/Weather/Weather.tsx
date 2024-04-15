@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Search from "../Search/Search";
-
 const Weather: React.FC = ({ search, setSearch }) => {
   const [loading, setLoading] = useState(false);
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<any | null>(null);
 
   async function fetchWeatherData(param) {
     setLoading(true);
     try {
+      const OpenWeather_API_KEY = process.env.REACT_OPEN_WEATHER_API_KEY;
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${process.env.REACT_OPEN_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${param}&appid=${OpenWeather_API_KEY}`
       );
       const data = await response.json();
       if (data) {
