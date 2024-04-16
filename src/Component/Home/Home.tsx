@@ -33,8 +33,8 @@ const Home = () => {
         }
         const result = await fetch(apiUrl);
         const jsonData = await result.json();
-        console.log(jsonData);
-        console.log(jsonData.records);
+        // console.log(jsonData);
+        // console.log(jsonData.records);
         if (jsonData && jsonData.records) {
           setCountryData(jsonData);
           setCityData(jsonData.records);
@@ -95,7 +95,7 @@ const Home = () => {
           </button>
         </div>
         {showSuggestions && (
-          <ul className="overflow-auto h-[10rem] border border-gray-400 w-[25rem] ml-[29.2rem] rounded-md">
+          <ul className="overflow-auto h-[10rem] border border-gray-400 md:w-[25rem] w-[18rem] md:ml-[29.2rem] rounded-md ml-[3.2rem]">
             {showSuggestions &&
               suggestions?.map((suggestion) => (
                 <li
